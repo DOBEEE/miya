@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>抽奖</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="main">
+		<img class="zhuanpan" src="images/zhuanpan.png" alt="">
+		<a id="zhizhen" class="zhizhen" href="#"><img src="images/zhizhen.png" alt=""></a>
+	</div>
+	<script>
+		var oZhi=document.getElementsByClassName('zhizhen');
+		var oZhuan=document.getElementsByClassName('zhuanpan');
+		var cssRule;
+		var rol=90;
+
+		function getRule() {
+		      var rule;
+		      var ss = document.styleSheets;
+		      for (var i = 0; i < ss.length; ++i) {
+		          // loop through all the rules!
+		          for (var x = 0; x < ss[i].cssRules.length; ++x) {
+		              rule = ss[i].cssRules[x];
+		              if (rule.name == "action" && rule.type == CSSRule.KEYFRAMES_RULE) {
+		                  cssRule = rule;
+		              }
+		          }
+		      }
+		  }
+		getRule();
+		cssRule.deleteRule("0");
+  		cssRule.deleteRule("1");
+  		cssRule.appendRule("0% { transform: rotate(0);}");
+  		cssRule.appendRule("100% { transform: rotate("+rol+"deg);}"); 
+		oZhi[0].onclick=function (argument) {
+			oZhuan[0].style.animationPlayState='running';
+			setTimeout(function (argument) {
+				oZhuan[0].style.animationPlayState='paused';
+			},1800)
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+	.container
+		.row
+			.main
+				.text
+					ul.messages
+				form.from-horizontal#form(method="post",action="/admin/movie/")
+					.form-group
+						.col-md-10.shuru
+							input.form-control#input(type="text",name="usertalk")
+						.col-md-2.tijiao
+							button.btn.btn-default(type="submit") 发送
+		.main1
+			img.zhuanpan(src="/images/zhuanpan.png" alt="")
+			a.zhizhen(href="#")
+				img(src="/images/zhizhen.png" alt="")
+
+	
+	script(src="/socketbow.js")
